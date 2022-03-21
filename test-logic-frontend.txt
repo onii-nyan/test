@@ -1,0 +1,27 @@
+var words = ["kita", "atik", "aku", "kia","makan","kua"];
+var words2=["kita", "atik", "aku", "kia","makan","kua"]
+var result = [];
+
+function spliceF (word){
+    index1=words2.indexOf(word)
+    words2.splice(index1, 1)
+}
+
+for (var i = 0; i < words.length; i++) {
+  var word = words[i];
+  var alphabetical = word.split("").sort().join("");
+  
+  for (var j = i+1; j < words.length; j++) {
+    if (i === j) {
+      continue;
+    }
+    var other = words[j];
+    if (alphabetical === other.split("").sort().join("")) {
+        spliceF(word)
+        spliceF(other)
+        result.push([word, other])
+    }
+ }
+}
+result.push(words2) 
+console.log("result",result)
